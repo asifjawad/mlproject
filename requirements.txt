@@ -1,3 +1,5 @@
 numpy
 pandas
--e .
+scikit-learn
+matplotlib
+# -e .
