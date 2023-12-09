@@ -21,3 +21,7 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e, sys)
+
+
+def evaluate_model(train_x, train_y, test_x, test_y, models):   
+    report = []
