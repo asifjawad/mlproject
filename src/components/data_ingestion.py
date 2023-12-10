@@ -64,7 +64,4 @@ if __name__ == "__main__":
 
 
     modeltrainer=ModelTrainer()
-    print("Best model score = ",modeltrainer.initiate_model_trainer(train_arr,test_arr))
-
-
-        
+    print("Best model score with Hyper parameter = ",modeltrainer.initiate_model_trainer(train_arr,test_arr)
