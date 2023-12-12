@@ -19,7 +19,7 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join('artifacts',"proclearprocessor.pkl")
+    preprocessor_obj_file_path = os.path.join('artifacts',"preprocessor.pkl")
 
 
 class DataTransformation():
@@ -65,8 +65,9 @@ class DataTransformation():
 
             preprocessor=ColumnTransformer(
                 [
-                ("num_pipeline",num_pipeline,numerical_columns),
-                ("cat_pipelines",cat_pipeline,categorical_columns)
+                ("cat_pipelines",cat_pipeline,categorical_columns),
+                ("num_pipeline",num_pipeline,numerical_columns)
+
 
                 ]
 
@@ -103,6 +104,8 @@ class DataTransformation():
 
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
+            print("shape of train",input_feature_test_arr.shape[1])
+
 
             train_arr = np.c_[
                 input_feature_train_arr, np.array(target_feature_train_df)
@@ -111,12 +114,12 @@ class DataTransformation():
 
             logging.info(f"Saved preprocessing object.")
             
-            save_object(
+            # save_object(
 
-                file_path=self.data_transformation_config.preprocessor_obj_file_path,
-                obj=preprocessing_obj
+            #     file_path=self.data_transformation_config.preprocessor_obj_file_path,
+            #     obj=preprocessing_obj
 
-            )
+            # )
 
 
             return (
@@ -131,3 +134,9 @@ class DataTransformation():
         
 
 
+
+
+if __name__ == "__main__":
+    transform = DataTransformation()
+    transform.initiate_data_transformation("artifacts/train.csv","artifacts/test.csv")
+    print("Your Pickle file is Ready")
