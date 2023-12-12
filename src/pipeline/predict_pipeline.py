@@ -9,7 +9,7 @@ class PredictPipeline:
         pass
 
     def predict(self,features):
-        
+
 
 
 class CustomData:
@@ -21,3 +21,6 @@ class CustomData:
             custom_data_input_dict= {
                  
             }
+
+        except Exception as e:
+            raise CustomException(e,sys)
