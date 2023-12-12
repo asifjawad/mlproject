@@ -84,17 +84,22 @@ class DataTransformation():
     def initiate_data_transformation(self, train_data, test_data):
         try:
 
-            train_df = pd.read_csv(train_data)
+            train_df = pd.read_csv(train_data)           
             test_df = pd.read_csv(test_data)
+            print(train_df)
             logging.info("Reading Train and Test data completed")
 
             target_column_name = "math_score"
 
             input_feature_train_df = train_df.drop(columns=[target_column_name],axis=1)
+
+            print("shape", input_feature_train_df)
             target_feature_train_df = train_df[target_column_name]
 
-            input_feature_test_df = train_df.drop(columns=[target_column_name],axis=1)
-            target_feature_test_df = train_df[target_column_name]
+            input_feature_test_df = test_df.drop(columns=[target_column_name],axis=1)
+            print("shape", input_feature_test_df.columns)
+
+            target_feature_test_df = test_df[target_column_name]
 
             logging.info("Obtaining Preprocessing obj")
             preprocessing_obj = self.get_data_transformer_object()
@@ -114,12 +119,12 @@ class DataTransformation():
 
             logging.info(f"Saved preprocessing object.")
             
-            # save_object(
+            save_object(
 
-            #     file_path=self.data_transformation_config.preprocessor_obj_file_path,
-            #     obj=preprocessing_obj
+                file_path=self.data_transformation_config.preprocessor_obj_file_path,
+                obj=preprocessing_obj
 
-            # )
+            )
 
 
             return (
