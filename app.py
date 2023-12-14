@@ -32,16 +32,16 @@ def predict_datapoint():
         )
         pred_df=data.get_data_as_data_frame()
         print(pred_df)
-        print("Before Prediction")
+        print("Before Predictions")
 
         predict_pipeline=PredictPipeline()
-        print("Mid Prediction")
+        print("Mid Predictions")
         results=predict_pipeline.predict(pred_df)
-        print("after Prediction")
+        print("after Predictions")
         return render_template('home.html',results=results[0])
 
 if __name__=="__main__":
-    app.run(host='0.0.0.0', port='5001', debug=True)
+    app.run(host='0.0.0.0', port='5000', debug=True)
      
         
 
