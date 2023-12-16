@@ -9,6 +9,7 @@ application=Flask(__name__)
 
 app=application
 
+
 ## Route for a home page
 
 @app.route('/')
@@ -32,7 +33,7 @@ def predict_datapoint():
         )
         pred_df=data.get_data_as_data_frame()
         print(pred_df)
-        print("Before Prediction")
+        print("Before Prediction the exam")
 
         predict_pipeline=PredictPipeline()
         print("Mid Prediction")
