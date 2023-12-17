@@ -1,4 +1,4 @@
-FROM python:3.8-sli-buster
+FROM python:3.8-alpine
 WORKDIR /app
 
 COPY . /app
